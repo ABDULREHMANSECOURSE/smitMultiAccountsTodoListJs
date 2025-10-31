@@ -215,8 +215,8 @@ function logInfFunc() {
     if (foundUser) {
         emailL.value = ""
         passwordL.value = ""
-        document.querySelector('#logIn').style.display = "none"
-        document.querySelector('#profile').style.display = "flex"
+        login.style.display = "none"
+        profile.style.display = "flex"
 
 
         document.querySelector('.pName').textContent = foundUser.fName + ' ' + foundUser.lName
@@ -232,7 +232,7 @@ function logInfFunc() {
     localStorage.setItem('logedAccount', JSON.stringify(foundUser))
 };
 
-document.querySelector('#button').addEventListener('click', logIn)
+document.querySelector('#button').addEventListener('click', logInFunc);
 
 
 
@@ -258,11 +258,11 @@ function autoLogin() {
 autoLogin();
 
 function logoutFunc() {
-    document.querySelector('#profile').style.display = "none";
-    document.querySelector('#logIn').style.display = "flex";
+    profile.style.display = "none";
+    login.style.display = "flex";
 
-    localStorage.removeItem('logedAccount')
+    localStorage.removeItem('logedAccount');
     popupGreen('You have been successfully logged out.');
 }
 
-document.querySelector('.logout').addEventListener('click', logoutFunc)
+document.querySelector('.logout').addEventListener('click', logoutFunc);
