@@ -265,6 +265,7 @@ document.querySelector('.logout').addEventListener('click', logoutFunc);
 
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
+    loadTodos()
 
 function loadTodos() {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
