@@ -169,6 +169,7 @@ function singUpFunc() {
         return;
     }
 
+    user.todos = []
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
 
     accounts.push(user)
@@ -195,7 +196,7 @@ document.querySelector('.save-profile').addEventListener('click', singUpFunc);
 
 
 
-function logInfFunc() {
+function logInFunc() {
     const emailL = document.querySelector('#emailL')
     const passwordL = document.querySelector('#password')
 
@@ -216,7 +217,7 @@ function logInfFunc() {
         emailL.value = ""
         passwordL.value = ""
         login.style.display = "none"
-        profile.style.display = "flex"
+        todo.style.display = "flex"
 
 
         document.querySelector('.pName').textContent = foundUser.fName + ' ' + foundUser.lName
@@ -229,7 +230,7 @@ function logInfFunc() {
         popup("Login Failed: Incorrect email or password.");
     }
 
-    localStorage.setItem('logedAccount', JSON.stringify(foundUser))
+    localStorage.setItem('logedAccount', JSON.stringify(foundUser.email));
 };
 
 document.querySelector('#button').addEventListener('click', logInFunc);
@@ -244,8 +245,8 @@ function autoLogin() {
     const loggedAccount = JSON.parse(localStorage.getItem('logedAccount'));
 
     if (loggedAccount) {
-        document.querySelector('#logIn').style.display = "none";
-        document.querySelector('#profile').style.display = "flex";
+        login.style.display = "none";
+        todo.style.display = "flex";
 
         document.querySelector('.pName').textContent = loggedAccount.fName + ' ' + loggedAccount.lName;
         document.querySelector('.pDob').textContent = loggedAccount.dob;
@@ -258,7 +259,7 @@ function autoLogin() {
 autoLogin();
 
 function logoutFunc() {
-    profile.style.display = "none";
+    todo.style.display = "none";
     login.style.display = "flex";
 
     localStorage.removeItem('logedAccount');
