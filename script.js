@@ -1,3 +1,9 @@
+const login = document.querySelector('#logIn');
+const signUp = document.querySelector('#signUp');
+const profile = document.querySelector('#profile');
+const todo = document.querySelector('#todo');
+
+
 function popup(text) {
     const popup = document.createElement('span');
     popup.className = 'popup';
@@ -56,15 +62,15 @@ const dontHaveAccount = document.querySelector('.dontHaveAccount')
 const haveAccount = document.querySelector('.haveAccount')
 
 function dontHaveAccountFunc() {
-    document.querySelector('#logIn').style.display = "none"
-    document.querySelector('#signUp').style.display = "flex"
+    login.style.display = "none"
+    signUp.style.display = "flex"
 }
 
 dontHaveAccount.addEventListener('click', dontHaveAccountFunc)
 
 function haveAccountFunc() {
-    document.querySelector('#logIn').style.display = "flex"
-    document.querySelector('#signUp').style.display = "none"
+    login.style.display = "flex"
+    signUp.style.display = "none"
 }
 
 haveAccount.addEventListener('click', haveAccountFunc)
@@ -74,7 +80,7 @@ haveAccount.addEventListener('click', haveAccountFunc)
 
 
 
-function singUp() {
+function singUpFunc() {
 
     const user = {}
 
@@ -170,8 +176,8 @@ function singUp() {
     localStorage.setItem('accounts', JSON.stringify(accounts))
     popupGreen('Account created successfully! You can now log in.');
 
-    document.querySelector('#logIn').style.display = "flex"
-    document.querySelector('#signUp').style.display = "none"
+    login.style.display = "flex"
+    signUp.style.display = "none"
 
 
     fName.value = "";
@@ -183,13 +189,13 @@ function singUp() {
     document.querySelector('#gender').value = "select gender";
 }
 
-document.querySelector('.save-profile').addEventListener('click', singUp);
+document.querySelector('.save-profile').addEventListener('click', singUpFunc);
 
 
 
 
 
-function logIn() {
+function logInfFunc() {
     const emailL = document.querySelector('#emailL')
     const passwordL = document.querySelector('#password')
 
