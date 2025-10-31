@@ -257,11 +257,6 @@ document.querySelector('.logout').addEventListener('click', logoutFunc);
 
 
 
-const todoInput = document.getElementById('todoInput');
-const todoList = document.getElementById('todoList');
-
-
-
 
 // const todoInput = document.getElementById('todoInput');
 // const todoList = document.getElementById('todoList');
