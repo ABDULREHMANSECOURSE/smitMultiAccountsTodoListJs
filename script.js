@@ -278,7 +278,8 @@ function saveTodos() {
     const loggedAccount = JSON.parse(localStorage.getItem('logedAccount'));
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const loggedUser = accounts.find(user => user.email === loggedAccount);
-    const todos = loggedUser.todos;
+    const todos = [];
+    loggedUser.todos = todos;
     document.querySelectorAll('.todo-list-item').forEach(item => {
         const text = item.querySelector('.todo-item').textContent;
         const completed = item.querySelector('.todo-item').classList.contains('completed');
