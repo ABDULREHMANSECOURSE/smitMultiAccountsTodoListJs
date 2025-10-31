@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d6cfcf;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: center;
+    background-color: rgba(247, 247, 247, 0.733);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+img {
+    height: 100px;
+}
+
+.ep {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    border-bottom: 2px solid rgba(6, 7, 7, 0.315);
+    border-top: 2px solid rgba(6, 7, 7, 0.315);
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.email input {
+    padding: 10px;
+    background-color: #0c07071c;
+    border: none;
+    border-radius: 10px;
+}
+
+.password {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.password span {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c07071c;
+    border-radius: 10px;
+}
+
+.password input {
+    background-color: #a1202000;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+
+.password img {
+    height: 30px;
+    margin: 0 5px;
+}
+
+button {
+    padding: 15px;
+    font-size: 3vh;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border: none;
+    background-color: #00000023;
+    margin-top: 20px;
+}
+
+button:hover,
+a img:hover,
+img:hover {
+    transition-duration: 500ms;
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.create-account {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-profile {
+    display: none;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.name {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fname,
+.lname {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.fname input,
+.lname input {
+    padding: 15px;
+    border: none;
+    background-color: #00000023;
+    border-radius: 10px;
+}
+
+.gender {
+    width: 100%;
+    font-size: 25px;
+    background-color: #00000023;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.dob {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.dob input {
+    padding: 15px;
+    width: 100%;
+    background-color: #00000023;
+    border: none;
+    border-radius: 10px;
+}
+
+.phone-number {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-number input {
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #00000023;
+    border: none;
+}
+
+.profile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.profile-name h4,
+.profile-dob h4,
+.profile-gender h4,
+.profile-email h4,
+.profile-number h4 {
+    width: 100%;
+    font-size: 20px;
+}
+
+.profile-name h2,
+.profile-dob h2,
+.profile-gender h2,
+.profile-email h2,
+.profile-number h2 {
+    background-color: #00000023;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.profile-name,
+.profile-dob,
+.profile-gender,
+.profile-email,
+.profile-number {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.si-ep {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.emailSI {
+    padding: 15px;
+    background-color: #00000023;
+    border: none;
+    border-radius: 10px;
+}
+
+.passwordSI {
+    padding: 15px;
+    width: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.si-ep>span {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.si-ep>span span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: #00000023;
+    border-radius: 10px;
+    padding-right: 5px;
+    justify-content: space-between;
+}
+
+.eyeSI {
+    height: 30px;
+}
+
+.dontHaveAccount,
+.haveAccount {
+    font-size: 15px;
+    background-color: #00000000;
+    color: blue;
+    padding: 0;
+    width: 100vh;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.haveAccount {
+    margin-top: -10px;
+}
+
+.logout {
+    background-color: #00000000;
+    padding: 0;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: -18px;
+    color: #0446fc;
+    font-weight: normal;
+}
+
+.popup {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    opacity: 0;
+    padding: 20px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    animation:
+        popup-slide-in 0.5s ease-out forwards,
+        popup-slide-out 0.5s ease-in forwards 2s;
+}
+
+@keyframes popup-slide-in {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+@keyframes popup-slide-out {
+    0% {
+        top: 20px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -100px;
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+.todo-container {
+    /* background-color: #fff; */
+    /* padding: 30px; */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border-top: 2px solid #00000026;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.add-todo {
+    border-top: 2px solid #00000014;
+    /* margin-top: -20px; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.todo-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f7f7f7;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.add-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-button:hover {
+    background-color: #218838;
+    transition-duration: 500ms;
+    transform: scale(1.12);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-right: 10px;
+    margin-right: -25px;
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.todo-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    gap: 10px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.todo-item,
+.todo-list-item input {
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+    background-color: #f7f7f7;
+    word-wrap: break-word;
+    white-space: normal;
+    flex: 1;
+}
+
+.todo-item-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+}
+
+.todo-item-buttons button {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    flex: 1;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.todo-item-buttons button.complete-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.todo-item-buttons button.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.todo-item-buttons button.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.todo-item-buttons button:hover {
+    opacity: 0.8;
+    transform: scale(75%);
+}
+
+
+* {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: #28a745;
+}
+
+::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 50%;
+}

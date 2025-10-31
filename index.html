@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="google-site-verification" content="QmZ7IcKnsuJ6uCegiEnT37a9I1OMivF6bzgSDytSRwI">
+    <meta property="og:image" content="https://smitloginsigninpagejs.vercel.app/assets/arpLogo.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Signup Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/arpLogo.png" type="image/x-icon">
+    <link rel="icon" href="assets/arpLogo.png">
+</head>
+
+<body>
+    <span class="container">
+        <a class="linkedinLink" href="http://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=abdulrehmanprogrammer"
+            target="_blank"><img src="assets/arpLogo.png" alt=""></a>
+        <form class="create-account" id="logIn">
+            <span class="ep">
+                <span class="email">
+                    <h3>Email: </h3>
+                    <input type="email" class="email-inp" id="emailL">
+                </span>
+                <span class="password">
+                    <h3>Password: </h3>
+                    <span>
+                        <input type="password" class="password-inp" id="password">
+                        <img class="pas-eye" id="passEye" src="assets/eyeon.png" alt="">
+                    </span>
+                </span>
+            </span>
+            <button type="button" id="button">Log In</button>
+            <button type="button" class="dontHaveAccount">Dont have an account</button>
+        </form>
+        <form class="create-profile" id="signUp">
+            <span class="name">
+                <span class="fname">
+                    <h2>First name</h2>
+                    <input type="text" placeholder="First Name" class="fname" id="fname" name="fname">
+                </span>
+                <span class="lname">
+                    <h2>Last Name</h2>
+                    <input type="text" placeholder="Last Name" class="lname" id="lname" name="lname">
+                </span>
+            </span>
+            <select name="gender" class="gender" id="gender">
+                <option value="select gender" selected="1" disabled="1">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <span class="si-ep">
+                <span>
+                    <h2>Email</h2>
+                    <input type="email" class="emailSI" id="emailS">
+                </span>
+                <span>
+                    <h2>Password</h2>
+                    <span>
+                        <input type="password" class="passwordSI" id="passwordS">
+                        <img class="eyeSI" id="eyeS" class="passEyeSI" src="assets/eyeon.png" alt="">
+                    </span>
+                </span>
+            </span>
+            <span class="dob">
+                <h2>DATE OF BIRTH</h2>
+                <input type="date" id="dob">
+            </span>
+            <span class="phone-number">
+                <h2>Phone Number</h2>
+                <input type="tel" placeholder="+92" id="phoneNumber">
+            </span>
+            <button type="button" class="save-profile">Create Account</button>
+            <button type="button" class="haveAccount">Already have an account</button>
+        </form>
+        <span class="profile" id="profile">
+            <span class="profile-name">
+                <h4>Name: </h4>
+                <h2 class="pName"></h2>
+            </span>
+            <span class="profile-dob">
+                <h4>Date of birth: </h4>
+                <h2 class="pDob"></h2>
+            </span>
+            <span class="profile-gender">
+                <h4>Gender:</h4>
+                <h2 class="pGender"></h2>
+            </span>
+            <span class="profile-email">
+                <h4>Email:</h4>
+                <h2 class="pEmail"></h2>
+            </span>
+            <span class="profile-number">
+                <h4>Phone number:</h4>
+                <h2 class="pNumber"></h2>
+            </span>
+            <button class="logout">Logout</button>
+        </span>
+        <div class="todo-container" id="todo">
+            <h1>Todo List</h1>
+            <span id="addTodo" class="add-todo">
+                <input type="text" class="todo-input" id="todoInput" placeholder="Add a new task...">
+                <button class="add-button" id="addButton">Add</button>
+            </span>
+            <span id="todoList" class="todo-list">
+                <!-- <span class="todo-list-item" id="todoListItem">
+                    <span class="todo-item" id="todoItem">todo 1</span>
+                    <span class="todo-item-buttons" id="todoItemButtons">
+                        <button class="complete-button">Complete</button>
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </span>
+                </span> -->
+            </span>
+
+        </div>
+    </span>
+</body>
+<script src="script.js"> </script>
+
+</html>
