@@ -247,12 +247,10 @@ function autoLogin() {
     if (loggedAccount) {
         login.style.display = "none";
         todo.style.display = "flex";
+        const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
 
-        document.querySelector('.pName').textContent = loggedAccount.fName + ' ' + loggedAccount.lName;
-        document.querySelector('.pDob').textContent = loggedAccount.dob;
-        document.querySelector('.pEmail').textContent = loggedAccount.email;
-        document.querySelector('.pNumber').textContent = loggedAccount.phoneNumber;
-        document.querySelector('.pGender').textContent = loggedAccount.gender;
+        const foundUser = accounts.find(user => user.email === loggedAccount);
+        todos = foundUser.todos;
     }
 }
 
