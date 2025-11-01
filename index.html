@@ -14,25 +14,9 @@
 
 <body>
     <span class="container">
-        <a class="linkedinLink" href="http://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=abdulrehmanprogrammer"
+        <a class="linkedinLink"
+            href="http://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=abdulrehmanprogrammer"
             target="_blank"><img src="assets/arpLogo.png" alt=""></a>
-        <form class="create-account" id="logIn">
-            <span class="ep">
-                <span class="email">
-                    <h3>Email: </h3>
-                    <input type="email" class="email-inp" id="emailL">
-                </span>
-                <span class="password">
-                    <h3>Password: </h3>
-                    <span>
-                        <input type="password" class="password-inp" id="password">
-                        <img class="pas-eye" id="passEye" src="assets/eyeon.png" alt="">
-                    </span>
-                </span>
-            </span>
-            <button type="button" id="button">Log In</button>
-            <button type="button" class="dontHaveAccount">Dont have an account</button>
-        </form>
         <form class="create-profile" id="signUp">
             <span class="name">
                 <span class="fname">
@@ -74,6 +58,23 @@
             <button type="button" class="save-profile">Create Account</button>
             <button type="button" class="haveAccount">Already have an account</button>
         </form>
+        <form class="create-account" id="logIn">
+            <span class="ep">
+                <span class="email">
+                    <h3>Email: </h3>
+                    <input type="email" class="email-inp" id="emailL">
+                </span>
+                <span class="password">
+                    <h3>Password: </h3>
+                    <span>
+                        <input type="password" class="password-inp" id="password">
+                        <img class="pas-eye" id="passEye" src="assets/eyeon.png" alt="">
+                    </span>
+                </span>
+            </span>
+            <button type="button" id="button">Log In</button>
+            <button type="button" class="dontHaveAccount">Dont have an account</button>
+        </form>
         <span class="profile" id="profile">
             <span class="profile-name">
                 <h4>Name: </h4>
@@ -95,6 +96,7 @@
                 <h4>Phone number:</h4>
                 <h2 class="pNumber"></h2>
             </span>
+            <button class="openTodoList">My Todo List</button>
             <button class="logout">Logout</button>
         </span>
         <div class="todo-container" id="todo">
@@ -113,6 +115,7 @@
                     </span>
                 </span> -->
             </span>
+            <button class="openProfile">My Profile</button>
 
         </div>
     </span>

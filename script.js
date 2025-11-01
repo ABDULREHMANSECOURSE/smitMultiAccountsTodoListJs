@@ -1,9 +1,3 @@
-const login = document.querySelector('#logIn');
-const signUp = document.querySelector('#signUp');
-const profile = document.querySelector('#profile');
-const todo = document.querySelector('#todo');
-
-
 function popup(text) {
     const popup = document.createElement('span');
     popup.className = 'popup';
@@ -62,21 +56,25 @@ const dontHaveAccount = document.querySelector('.dontHaveAccount')
 const haveAccount = document.querySelector('.haveAccount')
 
 function dontHaveAccountFunc() {
-    login.style.display = "none"
-    signUp.style.display = "flex"
+    document.querySelector('#logIn').style.display = "none"
+    document.querySelector('#signUp').style.display = "flex"
 }
 
 dontHaveAccount.addEventListener('click', dontHaveAccountFunc)
 
 function haveAccountFunc() {
-    login.style.display = "flex"
-    signUp.style.display = "none"
+    document.querySelector('#logIn').style.display = "flex"
+    document.querySelector('#signUp').style.display = "none"
 }
 
 haveAccount.addEventListener('click', haveAccountFunc)
 
 
-function singUpFunc() {
+
+
+
+
+function singUp() {
 
     const user = {}
 
@@ -166,6 +164,7 @@ function singUpFunc() {
     }
 
     user.todos = []
+
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
 
     accounts.push(user)
@@ -173,8 +172,8 @@ function singUpFunc() {
     localStorage.setItem('accounts', JSON.stringify(accounts))
     popupGreen('Account created successfully! You can now log in.');
 
-    login.style.display = "flex"
-    signUp.style.display = "none"
+    document.querySelector('#logIn').style.display = "flex"
+    document.querySelector('#signUp').style.display = "none"
 
 
     fName.value = "";
@@ -185,10 +184,14 @@ function singUpFunc() {
     document.querySelector('#phoneNumber').value = "";
     document.querySelector('#gender').value = "select gender";
 }
-document.querySelector('.save-profile').addEventListener('click', singUpFunc);
+
+document.querySelector('.save-profile').addEventListener('click', singUp);
 
 
-function logInFunc() {
+
+
+
+function logIn() {
     const emailL = document.querySelector('#emailL')
     const passwordL = document.querySelector('#password')
 
@@ -208,8 +211,8 @@ function logInFunc() {
     if (foundUser) {
         emailL.value = ""
         passwordL.value = ""
-        login.style.display = "none"
-        todo.style.display = "flex"
+        document.querySelector('#logIn').style.display = "none"
+        document.querySelector('#profile').style.display = "flex"
 
 
         document.querySelector('.pName').textContent = foundUser.fName + ' ' + foundUser.lName
@@ -222,38 +225,33 @@ function logInFunc() {
         popup("Login Failed: Incorrect email or password.");
     }
 
-    localStorage.setItem('logedAccount', JSON.stringify(foundUser.email));
+    localStorage.setItem('logedAccount', JSON.stringify(foundUser))
 };
 
-document.querySelector('#button').addEventListener('click', logInFunc);
+document.querySelector('#button').addEventListener('click', logIn)
+
+
+
+
+
 
 
 function autoLogin() {
     const loggedAccount = JSON.parse(localStorage.getItem('logedAccount'));
 
     if (loggedAccount) {
-        login.style.display = "none";
-        todo.style.display = "flex";
-        const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+        document.querySelector('#logIn').style.display = "none";
+        document.querySelector('#profile').style.display = "flex";
 
-        const foundUser = accounts.find(user => user.email === loggedAccount);
-        todos = foundUser.todos;
+        document.querySelector('.pName').textContent = loggedAccount.fName + ' ' + loggedAccount.lName;
+        document.querySelector('.pDob').textContent = loggedAccount.dob;
+        document.querySelector('.pEmail').textContent = loggedAccount.email;
+        document.querySelector('.pNumber').textContent = loggedAccount.phoneNumber;
+        document.querySelector('.pGender').textContent = loggedAccount.gender;
     }
 }
 
 autoLogin();
-
-function logoutFunc() {
-    todo.style.display = "none";
-    login.style.display = "flex";
-
-    localStorage.removeItem('logedAccount');
-    popupGreen('You have been successfully logged out.');
-}
-
-document.querySelector('.logout').addEventListener('click', logoutFunc);
-
-
 
 
 
@@ -265,122 +263,147 @@ document.querySelector('.logout').addEventListener('click', logoutFunc);
 
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
-    loadTodos()
 
-function loadTodos() {
-    const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+
+function autoTodo() {
     const loggedAccount = JSON.parse(localStorage.getItem('logedAccount'));
-    const loggedUser = accounts.find(user => user.email === loggedAccount);
-    const todos = loggedUser.todos || [];
-    todos.forEach(todo => createTodoElement(todo.text, todo.completed));
+    const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+    const userTodos = accounts.find(acc => acc.email === loggedAccount.email).todos;
+    userTodos.forEach(todo => createTodoElement(todo.text, todo.completed));
 }
+autoTodo();
 
-function saveTodos() {
+function saveTodos() {   
     const loggedAccount = JSON.parse(localStorage.getItem('logedAccount'));
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-    const loggedUser = accounts.find(user => user.email === loggedAccount);
-    const todos = [];
-    loggedUser.todos = todos;
+    const userTodos = accounts.find(acc => acc.email === loggedAccount.email).todos = [];
     document.querySelectorAll('.todo-list-item').forEach(item => {
         const text = item.querySelector('.todo-item').textContent;
         const completed = item.querySelector('.todo-item').classList.contains('completed');
-        todos.push({ text, completed });
+        userTodos.push({ text, completed });
     });
     localStorage.setItem('accounts', JSON.stringify(accounts));
 }
 
 function createTodoElement(text, completed = false) {
-    const todoItemBox = document.createElement('span');
-    todoItemBox.className = 'todo-list-item';
+  const todoItemBox = document.createElement('span');
+  todoItemBox.className = 'todo-list-item';
 
-    const todoItemText = document.createElement('span');
-    todoItemText.className = 'todo-item';
-    todoItemText.textContent = text;
+  const todoItemText = document.createElement('span');
+  todoItemText.className = 'todo-item';
+  todoItemText.textContent = text;
 
-    if (completed) {
-        todoItemText.classList.add('completed');
-        todoItemText.style.cssText = `
+  if (completed) {
+    todoItemText.classList.add('completed');
+    todoItemText.style.cssText = `
       color: #fff;
       background-color: #28a746a6;`;
-    }
+  }
 
-    const todoItemButtons = document.createElement('span');
-    todoItemButtons.className = 'todo-item-buttons';
+  const todoItemButtons = document.createElement('span');
+  todoItemButtons.className = 'todo-item-buttons';
 
-    const completeButton = document.createElement('button');
-    completeButton.className = 'complete-button';
-    completeButton.textContent = 'Complete';
+  const completeButton = document.createElement('button');
+  completeButton.className = 'complete-button';
+  completeButton.textContent = 'Complete';
 
-    const editButton = document.createElement('button');
-    editButton.className = 'edit-button';
-    editButton.textContent = 'Edit';
+  const editButton = document.createElement('button');
+  editButton.className = 'edit-button';
+  editButton.textContent = 'Edit';
 
-    const deleteButton = document.createElement('button');
-    deleteButton.className = 'delete-button';
-    deleteButton.textContent = 'Delete';
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete-button';
+  deleteButton.textContent = 'Delete';
 
-    todoItemButtons.append(completeButton, editButton, deleteButton);
-    todoItemBox.append(todoItemText, todoItemButtons);
-    todoList.appendChild(todoItemBox);
+  todoItemButtons.append(completeButton, editButton, deleteButton);
+  todoItemBox.append(todoItemText, todoItemButtons);
+  todoList.appendChild(todoItemBox);
 
-    completeButton.addEventListener('click', function () {
-        todoItemText.classList.toggle('completed');
-        if (todoItemText.classList.contains('completed')) {
-            todoItemText.style.cssText = `
+  completeButton.addEventListener('click', function () {
+    todoItemText.classList.toggle('completed');
+    if (todoItemText.classList.contains('completed')) {
+      todoItemText.style.cssText = `
         color: #fff;
         background-color: #28a746a6;`;
-        } else {
-            todoItemText.style.cssText = `
+    } else {
+      todoItemText.style.cssText = `
       color: #000;
       background-color: #f7f7f7;`;
-        }
-        saveTodos();
-    });
+    }
+    saveTodos();
+  });
 
-    editButton.addEventListener('click', function () {
-        if (editButton.textContent === 'Edit') {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = todoItemText.textContent;
-            input.className = 'edit-input';
+  editButton.addEventListener('click', function () {
+    if (editButton.textContent === 'Edit') {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = todoItemText.textContent;
+      input.className = 'edit-input';
 
-            todoItemBox.insertBefore(input, todoItemButtons);
-            todoItemText.remove();
+      todoItemBox.insertBefore(input, todoItemButtons);
+      todoItemText.remove();
 
-            editButton.textContent = 'Save';
-            editButton.style.backgroundColor = '#4caf50';
-        } else {
-            const input = todoItemBox.querySelector('.edit-input');
-            const newText = input.value.trim();
+      editButton.textContent = 'Save';
+      editButton.style.backgroundColor = '#4caf50';
+    } else {
+      const input = todoItemBox.querySelector('.edit-input');
+      const newText = input.value.trim();
 
-            if (newText !== '') {
-                todoItemText.textContent = newText;
-            }
+      if (newText !== '') {
+        todoItemText.textContent = newText;
+      }
 
-            input.remove();
-            todoItemBox.insertBefore(todoItemText, todoItemButtons);
-            editButton.textContent = 'Edit';
-            editButton.style.backgroundColor = '#2196f3';
-            saveTodos();
-        }
-    });
+      input.remove();
+      todoItemBox.insertBefore(todoItemText, todoItemButtons);
+      editButton.textContent = 'Edit';
+      editButton.style.backgroundColor = '#2196f3';
+      saveTodos();
+    }
+  });
 
-    deleteButton.addEventListener('click', function () {
-        todoItemBox.remove();
-        saveTodos();
-    });
+  deleteButton.addEventListener('click', function () {
+    todoItemBox.remove();
+    saveTodos();
+  });
 }
 
 function addTodo() {
-    const text = todoInput.value.trim();
-    if (text === '') return;
-    createTodoElement(text);
-    todoInput.value = '';
-    saveTodos();
+  const text = todoInput.value.trim();
+  if (text === '') return;
+  createTodoElement(text);
+  todoInput.value = '';
+  saveTodos();
 }
 
 todoInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        addTodo();
-    }
+  if (event.key === 'Enter') {
+    addTodo();
+  }
 });
+
+
+
+
+
+
+
+document.querySelector('.openTodoList').addEventListener('click', () => {
+    document.getElementById('todo').style.display = 'block';
+    document.getElementById('profile').style.display = 'none';
+});
+document.querySelector('.openProfile').addEventListener('click', () => {
+    document.getElementById('profile').style.display = 'flex';
+    document.getElementById('todo').style.display = 'none';
+});
+
+function logoutFunc() {
+    document.querySelector('#profile').style.display = "none";
+    document.querySelector('#logIn').style.display = "flex";
+
+    localStorage.removeItem('logedAccount')
+    popupGreen('You have been successfully logged out.');
+
+
+    document.querySelectorAll('.todo-list-item').forEach(item => item.remove());
+}
+document.querySelector('.logout').addEventListener('click', logoutFunc)
